@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OTA & Review Dispute Guidelines</title>
+  <!-- Favicon -->
+  <link rel="icon" href="https://cdn.prod.website-files.com/62c2a83de7fe5c513c65b6e8/62e3b095dcfdb954b5f77076_gt-logo-text-black-p-500.png" type="image/png" />
+  <style>
+    /* Base resets and typography */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+    }
+    /* Header with branding */
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      color: #022db0;
+    }
+    header h1 a {
+      text-decoration: none;
+      color: inherit;
+    }
+    header h3 {
+      font-size: 1.5rem;
+      color: #022db0;
+      margin-top: 10px;
+    }
+    header p {
+      font-size: 1.1rem;
+      color: #555;
+      margin-top: 10px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    /* Tab navigation styling */
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .tab {
+      border: 2px solid;
+      border-bottom: none;
+      padding: 10px 20px;
+      margin: 0 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+    /* Brand-specific tab styles */
+    .tab.booking-tab {
+      border-color: #003580;
+      color: #003580;
+    }
+    .tab.booking-tab.active {
+      background-color: #003580;
+      color: #fff;
+    }
+    .tab.expedia-tab {
+      border-color: #FF6600;
+      color: #FF6600;
+    }
+    .tab.expedia-tab.active {
+      background-color: #FF6600;
+      color: #fff;
+    }
+    .tab.google-tab {
+      border-color: #4285F4;
+      color: #4285F4;
+    }
+    .tab.google-tab.active {
+      background-color: #4285F4;
+      color: #fff;
+    }
+    .tab.tripadvisor-tab {
+      border-color: #00AF87;
+      color: #00AF87;
+    }
+    .tab.tripadvisor-tab.active {
+      background-color: #00AF87;
+      color: #fff;
+    }
+    /* Content container styling */
+    .tab-content {
+      background-color: #fff;
+      border: 2px solid #022db0;
+      border-top: none;
+      padding: 20px;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .tab-content section {
+      display: none;
+    }
+    .tab-content section.active {
+      display: block;
+    }
+    /* Headings within content */
+    .tab-content h2,
+    .tab-content h3 {
+      color: #022db0;
+      margin-bottom: 10px;
+    }
+    .tab-content p {
+      margin-bottom: 10px;
+    }
+    /* Clean ordered list styling */
+    ol {
+      counter-reset: step;
+      list-style: none;
+      padding-left: 0;
+      margin-left: 0;
+    }
+    ol li {
+      position: relative;
+      padding-left: 35px;
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+    ol li::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: #022db0;
+      color: #fff;
+      width: 25px;
+      height: 25px;
+      line-height: 25px;
+      text-align: center;
+      border-radius: 50%;
+      font-weight: bold;
+    }
+    /* Accordion styling for clickable details */
+    details {
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 5px;
+      background-color: #fefefe;
+    }
+    details summary {
+      font-weight: bold;
+      cursor: pointer;
+      list-style: none;
+      position: relative;
+      padding-right: 25px;
+    }
+    details summary::after {
+      content: "▼";
+      position: absolute;
+      right: 0;
+      font-size: 1rem;
+      transition: transform 0.3s ease;
+    }
+    details[open] summary::after {
+      content: "▲";
+    }
+    /* Styling for lists in "cannot remove" sections */
+    .cannot-remove ul {
+      margin-left: 20px;
+      list-style-type: disc;
+    }
+    .cannot-remove li {
+      margin-bottom: 8px;
+    }
+    /* CTA Button styling */
+    .cta {
+      text-align: center;
+      margin-top: 30px;
+    }
+    .cta a {
+      background-color: #022db0;
+      color: #fff;
+      padding: 12px 25px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+    .cta a:hover {
+      background-color: #001f70;
+    }
+    /* Responsive styling */
+    @media (max-width: 600px) {
+      .tab {
+        padding: 10px;
+        font-size: 0.9rem;
+        margin: 5px 2px;
+      }
+      header h1 {
+        font-size: 2rem;
+      }
+      header h3 {
+        font-size: 1.3rem;
+      }
+      header p {
+        font-size: 1rem;
+      }
+      ol li {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="https://www.guesttouch.com/" target="_blank" rel="noopener noreferrer">GuestTouch Reputation Platform</a></h1>
+    <h3>Disputing Reviews | A Guide Guide Book</h3>
+    <p>
+        How to Dispute Guest Reviews: The Actual Platform Guidelines
+    </p>
+  </header>
+
+  <!-- Tab Navigation -->
+  <div class="tabs">
+    <div class="tab booking-tab active" data-target="booking">Booking.com</div>
+    <div class="tab expedia-tab" data-target="expedia">Expedia</div>
+    <div class="tab google-tab" data-target="google">Google</div>
+    <div class="tab tripadvisor-tab" data-target="tripadvisor">Tripadvisor</div>
+  </div>
+
+  <!-- Tab Content Container -->
+  <div class="tab-content">
+    <!-- Booking.com Tab Content -->
+    <section id="booking" class="active">
+      <h2>When Can a Guest Review Be Removed?</h2>
+      <p>Click on each item below to learn more:</p>
+      <details>
+        <summary>The guest cancelled their reservation and confirmed they never arrived.</summary>
+        <p>This indicates the review was made without an actual experience at your property.</p>
+      </details>
+      <details>
+        <summary>You cancelled the reservation at least 24 hours before check-in.</summary>
+        <p>A timely cancellation may justify a removal request as the guest's review might not reflect a genuine stay.</p>
+      </details>
+      <details>
+        <summary>The reservation is marked as a no-show and the review lacks details.</summary>
+        <p>If the review doesn’t provide meaningful feedback about an experience, you may challenge it.</p>
+      </details>
+      <details>
+        <summary>You cancelled the booking on the check-in day due to an invalid credit card.</summary>
+        <p>This scenario might warrant a removal since the guest didn’t have a proper stay.</p>
+      </details>
+      <details>
+        <summary>The guest reviewed the wrong property.</summary>
+        <p>If it's clear the review is for another property, you can request its removal.</p>
+      </details>
+      <details>
+        <summary>The guest is using the review to blackmail you (with evidence).</summary>
+        <p>When a review is used as leverage and you have written proof, removal may be considered.</p>
+      </details>
+      <p><strong>Note:</strong> Even if a review is removed, its score might still factor into your overall rating.</p>
+
+      <h2>What Reviews Cannot Be Removed</h2>
+      <p>Consider these points before disputing:</p>
+      <div class="cannot-remove">
+        <ul>
+          <li>If a guest stays at your property—even if they leave disappointed—the review stays.</li>
+          <li>If a guest cancelled before check-in or didn’t show due to unmet requests, the review may still remain.</li>
+          <li>Reviews from overbookings or genuine guest experiences will remain online.</li>
+          <li>If a guest confirms their stay, the review will not be removed.</li>
+        </ul>
+      </div>
+
+      <h2>How to Request the Removal of a Guest Review</h2>
+      <p>Follow these simple steps:</p>
+      <ol>
+        <li>Log in to <a href="http://admin.booking.com" target="_blank" rel="noopener noreferrer">the extranet</a>.</li>
+        <li>Click on <strong>Inbox</strong>.</li>
+        <li>Select <strong>Booking.com messages</strong>.</li>
+        <li>Click on <strong>See contact options</strong>.</li>
+        <li>Select <strong>Guest Reviews</strong> as the topic.</li>
+        <li>Click on <strong>See all contact options</strong>.</li>
+        <li>Choose your preferred contact method.</li>
+        <li>If messaging, provide your booking number and a clear explanation of your issue.</li>
+      </ol>
+    </section>
+
+    <!-- Expedia Tab Content -->
+    <section id="expedia">
+      <h2>Expedia Review Guidelines</h2>
+      <h3>What Reviews Cannot Be Removed</h3>
+      <p>
+        Expedia uses various tools to monitor reviews. However, negative feedback or claims alone aren’t enough for removal. For example, if a guest complains about a hotel restaurant’s food—even if the language is strong—the review will remain because it reflects their experience.
+      </p>
+      <p>
+        Remember, if a guest actually attempts or completes their stay, their review stays online.
+      </p>
+
+      <h3>When Can a Review Be Removed?</h3>
+      <p>
+        Expedia will consider removal only in limited cases. Click below to see examples:
+      </p>
+      <details>
+        <summary>The review contains prohibited content.</summary>
+        <p>
+          Reviews showing personal staff details, evidence of violence, child abuse, serious injury or death, discriminatory language, or inappropriate images (e.g. nudity) qualify for removal.
+        </p>
+      </details>
+      <details>
+        <summary>The review is a duplicate or submitted for the wrong property.</summary>
+        <p>
+          If a review is mistakenly posted for the wrong location or is duplicated, you may request its removal.
+        </p>
+      </details>
+      <details>
+        <summary>There’s a content and rating mismatch.</summary>
+        <p>
+          For example, if a review leaves a positive comment but assigns a 1-star rating, this discrepancy might be grounds for disputing the review.
+        </p>
+      </details>
+      <details>
+        <summary>The review is from a no-show or is proven to be fake.</summary>
+        <p>
+          If you can provide proof that the guest never arrived or the review is fraudulent, coerced, or fake, removal may be possible.
+        </p>
+      </details>
+
+      <h3>How to Request a Review Removal</h3>
+      <p>
+        Once you determine the review may qualify for removal, follow these steps:
+      </p>
+      <ol>
+        <li>Log in to your <a href="https://www.expediapartnercentral.com/" target="_blank" rel="noopener noreferrer">Expedia Partner Central</a>.</li>
+        <li>In the navigation menu, select <strong>Help and support</strong>.</li>
+        <li>Navigate to <strong>Get in touch</strong> and select <strong>Contact us</strong>.</li>
+        <li>Select <strong>Reservations, messages, or reviews</strong> and then <strong>Post-stay reviews</strong>.</li>
+        <li>Under <strong>Send us a message</strong>, choose <strong>Message us</strong>.</li>
+        <li>Fill out the form, attach any proof, and click <strong>Send message</strong>.</li>
+      </ol>
+    </section>
+
+    <!-- Google Tab Content -->
+    <section id="google">
+      <h2>Google Review Guidelines</h2>
+      <p>Google reviews can be removed when they violate specific content policies. Click on each item below to learn more:</p>
+      <details>
+        <summary>Off topic</summary>
+        <p>The review doesn’t pertain to an experience at or with the business.</p>
+      </details>
+      <details>
+        <summary>Spam</summary>
+        <p>The review is from a bot, a fake account, or contains ads and promotions.</p>
+      </details>
+      <details>
+        <summary>Conflict of interest</summary>
+        <p>The review is from someone affiliated with the business or a competitor’s business.</p>
+      </details>
+      <details>
+        <summary>Profanity</summary>
+        <p>The review contains swear words, sexually explicit language, or details graphic violence or other illegal activities.</p>
+      </details>
+      <details>
+        <summary>Bullying or harassment</summary>
+        <p>The review personally attacks a specific individual.</p>
+      </details>
+      <details>
+        <summary>Discrimination or hate speech</summary>
+        <p>The review contains harmful language about an individual or group based on their identity.</p>
+      </details>
+      <details>
+        <summary>Personal information</summary>
+        <p>The review includes personal details such as an address or phone number.</p>
+      </details>
+      <h3>How to Report a Google Review</h3>
+      <p>
+        To report a review on Google, follow these steps:
+      </p>
+      <ol>
+        <li>Open Google Maps or Search and find your business listing.</li>
+        <li>Locate the review you want to report.</li>
+        <li>Click on the three-dot menu next to the review and select <strong>Report review</strong>.</li>
+        <li>Select the reason that best describes the issue and submit your report.</li>
+      </ol>
+      <p>
+        Google will review your report and determine if the review violates its policies.
+      </p>
+    </section>
+
+    <!-- Tripadvisor Tab Content -->
+    <section id="tripadvisor">
+      <h2>Tripadvisor Review Removal Reasons</h2>
+      <p>Click on each item to learn more about when you can dispute a review on Tripadvisor:</p>
+      <details>
+        <summary>It's posted to the wrong business</summary>
+        <p>The review appears on a listing that doesn’t match the business the reviewer experienced.</p>
+      </details>
+      <details>
+        <summary>It's inappropriate or not family friendly</summary>
+        <p>The content may be deemed unsuitable or offensive for general audiences.</p>
+      </details>
+      <details>
+        <summary>It's written by an ex-employee or competitor</summary>
+        <p>Reviews from former staff or competitors can be biased and may be disputed.</p>
+      </details>
+      <details>
+        <summary>It describes an experience more than 1 year ago</summary>
+        <p>Outdated reviews may not reflect the current quality or service of the business.</p>
+      </details>
+      <details>
+        <summary>Review text is not consistent with rating given</summary>
+        <p>A mismatch between the written review and the star rating can be grounds for dispute.</p>
+      </details>
+      <details>
+        <summary>This reviewer did not experience my business</summary>
+        <p>If there is evidence that the reviewer never visited or used your service, removal may be justified.</p>
+      </details>
+      <details>
+        <summary>It's a duplicate by the same member</summary>
+        <p>Multiple reviews for the same experience by one person are not allowed.</p>
+      </details>
+      <details>
+        <summary>It contains commercial or promotional content</summary>
+        <p>Reviews that serve as advertisements or promotions rather than honest feedback can be removed.</p>
+      </details>
+      <details>
+        <summary>Another reviewer already wrote about this experience</summary>
+        <p>If the experience has been sufficiently covered, duplicate reviews may be redundant.</p>
+      </details>
+      <details>
+        <summary>I disagree with the information in this review</summary>
+        <p>Personal disagreement is not typically enough, but if there is verifiable misinformation, it can be challenged.</p>
+      </details>
+      <details>
+        <summary>It includes private information</summary>
+        <p>Any review revealing personal or sensitive details may be subject to removal.</p>
+      </details>
+      <details>
+        <summary>It is or contains illegal content</summary>
+        <p>Content that violates laws or promotes illegal activities is not permitted.</p>
+      </details>
+      <details>
+        <summary>I want to report something else</summary>
+        <p>If none of the above categories apply, you may still have grounds for reporting the review.</p>
+      </details>
+
+      <h2>Review Guidelines</h2>
+      <details>
+        <summary>Click to read Tripadvisor's full review guidelines</summary>
+        <p>
+          <strong>Review Guidelines</strong><br>
+          In addition to our general community guidelines, we have specific posting guidelines for reviews. Reviews are posted to a property’s listing page and are associated with a bubble rating between 1 and 5. Ratings selected may have an impact on the property’s position in Tripadvisor’s popularity rankings and/or how a property appears on our platform.
+        </p>
+        <p>
+          <strong>Second-Hand Experiences</strong><br>
+          A review on Tripadvisor should be an honest account of a traveler’s personal experience at or with a property that is listed on our site. As reviews are associated with a bubble rating and impact a business’s position within Tripadvisor’s popularity ranking, they should include relevant, helpful tips for other travelers and members of our community and must be based on a first-hand experience. Each user must have their own account and may not write on behalf of others unless writing about the experience of someone in your traveling party. If you did not experience the business as a guest or potential guest, we will not post your review.
+        </p>
+        <p>
+          <strong>Exceptions for Serious Safety Incidents</strong><br>
+          To ensure travelers are aware of serious safety incidents, exceptions include reviews written by a family member in the event of a death or by a parent/guardian for minors involved in serious safety incidents.
+        </p>
+        <p>
+          <strong>Second-Hand Information</strong><br>
+          Reviews should reflect your own experience. We remove reviews that contain quotes or descriptions from third parties, media excerpts, or any information not directly experienced by you. Exceptions include information communicated directly by a business staff member or from your travel party.
+        </p>
+        <p>
+          <strong>Irrelevant to Trip Experiences</strong><br>
+          Reviews are not the place for political, ethical, or religious debates unless directly relevant to your travel experience. Comments on local customs or safety issues are acceptable if they relate directly to your experience.
+        </p>
+        <p>
+          <strong>Review Length and Ratings</strong><br>
+          Reviews must be detailed and provide travel guidance. We enforce character limits and minimum requirements depending on the type of business. The bubble rating reflects your overall experience.
+        </p>
+        <p>
+          <strong>Irrelevant Content</strong><br>
+          Reviews solely on business policies, media coverage, or unsuccessful contact attempts will be removed. The focus must remain on your actual experience.
+        </p>
+        <p>
+          <strong>Unique &amp; Recent Experiences</strong><br>
+          Reviews must be submitted within one year of your experience. Duplicate reviews or reviews covering the same experience across multiple listings will be consolidated.
+        </p>
+        <p>
+          <strong>Bias &amp; Attempts to Manipulate Rankings</strong><br>
+          Reviews must be unbiased and from genuine travelers. Reviews from property affiliates, competitors, or those attempting to manipulate rankings will be penalized.
+        </p>
+        <p>
+          <strong>Restrictions</strong><br>
+          Properties may not discourage negative reviews contractually. Any attempt at coercion, review bombing, or manipulation of ratings is strictly prohibited.
+        </p>
+      </details>
+    </section>
+  </div>
+
+  <!-- CTA Button -->
+  <div class="cta">
+    <a href="https://meetings.hubspot.com/pinak" target="_blank" rel="noopener noreferrer">Schedule A Call</a>
+  </div>
+
+  <script>
+    // JavaScript for tab functionality
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', function () {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-content section').forEach(sec => sec.classList.remove('active'));
+        this.classList.add('active');
+        const target = this.getAttribute('data-target');
+        document.getElementById(target).classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
